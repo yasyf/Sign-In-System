@@ -58,7 +58,7 @@ if(isset($_POST['myLoc']))
 	 if (!is_user_logged_in()) 
 	{
 		?>
-		<center>	<h1>Please <a href="wp-login.php" class="button">Log In</a></h1> </center>
+		<center>	<br /><br /> <div><h1>Please <a href="wp-login.php" >Log In</a></h1></div> </center>
 		<?php
 		exit();
 	}
