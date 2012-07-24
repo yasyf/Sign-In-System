@@ -28,6 +28,7 @@ if(isset($_POST['myLoc']))
 		$premise = "'".mysql_escape_string($_REQUEST['premise'])."'";
 		$imgloc = "'".mysql_escape_string($_REQUEST['imgloc'])."'";
 		$sesh = mysql_escape_string($_REQUEST['sesh']);
+		$latlon = "'".mysql_escape_string($_REQUEST['latlon'])."'";
 			mysql_connect(
 			  $server = "localhost",
 			  $username = "signin_signins",
@@ -42,11 +43,12 @@ if(isset($_POST['myLoc']))
 			  `post` varchar(10) NOT NULL,
 			  `premise` varchar(1000) NOT NULL,
 			  `img` varchar(100) NOT NULL,
+			`latlon` varchar(100) NOT NULL,
 			  PRIMARY KEY (`id`),
 			  UNIQUE KEY `uid` (`uid`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;";
 				mysql_query($init) or die(mysql_error()); 
-				$insert = "INSERT INTO  `$sesh` (`id` ,`uid` ,`uname` ,`loc` ,`post` ,`premise` ,`img`)VALUES (NULL,".$userid.",".$id.",".$myLoc.",".$postalCode.",".$premise.",".$imgloc.")";
+				$insert = "INSERT INTO  `$sesh` (`id` ,`uid` ,`uname` ,`loc` ,`post` ,`premise` ,`img`, `latlon`)VALUES (NULL,".$userid.",".$id.",".$myLoc.",".$postalCode.",".$premise.",".$imgloc.",".$latlon.")";
 				mysql_query($insert) or die(mysql_error()); 
 	?>
 <center>	<br /><div><h1><?php echo($current_user->user_firstname." ".$current_user->user_lastname); ?> Signed In Successfully!</h1> </div></center>
@@ -91,6 +93,8 @@ var tries = 0;
 
 		 
 		console.log("found you!");
+		$("#latlon").val(position.coords.latitude+","+position.coords.longitude);
+		
 		var geocoder = new google.maps.Geocoder();
 	    geocoder.geocode(
 	    {
@@ -168,6 +172,7 @@ $(document).ready(function() {
 			<input type="hidden" name="premise" id="premise" value="" />
 			<input type="hidden" name="imgloc" id="imgloc" value="" />
 			<input type="hidden" name="sesh" id="sesh" value="" />
+			<input type="hidden" name="latlon" id="latlon" value="" />
 		<br />	<input type="submit" class="button" id="submitter" value="Sign In" style="display:none;"/>
 		<br /><a href="javascript:webcam.capture();" id="submit" class="button" >Sign In</a>
 		</form>
