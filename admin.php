@@ -44,7 +44,7 @@ $result = mysql_query($sql);
 <center>
 <form action="#" method="post">
 
-Select Date (Month/Day/Hour)<br />
+Select Date (Month.Day.Hour)<br />
 <select name="sesh">
 <?php
 while ($row = mysql_fetch_row($result)) {
