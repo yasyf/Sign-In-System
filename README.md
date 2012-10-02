@@ -4,4 +4,4 @@ TThe code is probably much more interesting than the actual site, which doesn't 
 
 The site is located at http://signin.yasyf.com.
 
-The interesting bits of code are probably at [the sign-in page](/blob/master/wp-content/themes/signin/index.php) and [the admin section](/blob/master/admin.php).
+The interesting bits of code are probably at [the sign-in page](blob/master/wp-content/themes/signin/index.php) and [the admin section](blob/master/admin.php).
